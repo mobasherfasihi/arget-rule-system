@@ -3133,11 +3133,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use((_websanova_vue_auth__WEBPACK_IMPOR
     enabled: false,
     interval: 30000
   },
-  fetchData: {
-    url: "/auth/user",
-    method: "GET",
-    enabled: true
-  },
+  // fetchData: { url: "/auth/user", method: "GET", enabled: false },
   rolesVar: "perms"
 });
 

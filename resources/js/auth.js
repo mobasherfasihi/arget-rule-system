@@ -24,6 +24,6 @@ Vue.use(VueAuth, {
         enabled: false,
         interval: 30000
     },
-    fetchData: { url: "/auth/user", method: "GET", enabled: true },
+    // fetchData: { url: "/auth/user", method: "GET", enabled: false },
     rolesVar: "perms"
 });

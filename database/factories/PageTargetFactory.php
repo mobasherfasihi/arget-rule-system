@@ -25,7 +25,7 @@ class PageTargetFactory extends Factory
     {
         return [
             'title' => $this->faker()->word(),
-            'message' => 'Welcome to the Page Targeting System.'
+            'alert_message' => 'Welcome to the Page Targeting System.'
         ];
     }
 }

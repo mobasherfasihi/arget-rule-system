@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\PageTargetController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,5 +22,8 @@ Route::namespace('Api')->group(function () {
         Route::prefix('user')->group(function() {
             Route::post('register', [AuthController::class, 'register']);
         });
+    });
+    Route::prefix('page-target')->middleware('auth')->group(function() {
+        Route::get('', [PageTargetController::class, 'index']);
     });
 });

@@ -1,6 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/js/signup-component.js": "/js/signup-component.js",
+    "/css/app.css": "/css/app.css",
     "/js/login-component.js": "/js/login-component.js",
-    "/css/app.css": "/css/app.css"
+    "/js/signup-component.js": "/js/signup-component.js",
+    "/js/page-target-component.js": "/js/page-target-component.js"
 }

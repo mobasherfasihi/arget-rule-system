@@ -168,7 +168,7 @@ export default {
       confirmPassword: null,
       verificationCode: null,
       rememberMe: false,
-      isLoggingIn: true,
+      isLoggingIn: false,
       isloading: false,
       loadingAction: null,
       errors: [],
@@ -215,6 +215,8 @@ export default {
 
           let authUser = response.data.userData;
           this.$store.dispatch("setUser", { ... authUser});
+
+          this.$router.push({ name: "rules" });
         },
         error(error) {
           this.isloading = false;
@@ -236,6 +238,11 @@ export default {
           return;
         },
       });
+    },
+    submitOnEnter() {
+      if (!this.isLoggingIn) {
+        this.login();
+      }
     },
     sendMessage(hasTimer = true) {
       Bus.$emit("flash-message", this.message, hasTimer);

@@ -186,7 +186,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       confirmPassword: null,
       verificationCode: null,
       rememberMe: false,
-      isLoggingIn: true,
+      isLoggingIn: false,
       isloading: false,
       loadingAction: null,
       errors: [],
@@ -228,6 +228,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.isloading = false;
           var authUser = response.data.userData;
           this.$store.dispatch("setUser", _objectSpread({}, authUser));
+          this.$router.push({
+            name: "rules"
+          });
         },
         error: function error(_error) {
           this.isloading = false;
@@ -248,6 +251,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           return;
         }
       });
+    },
+    submitOnEnter: function submitOnEnter() {
+      if (!this.isLoggingIn) {
+        this.login();
+      }
     },
     sendMessage: function sendMessage() {
       var hasTimer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;

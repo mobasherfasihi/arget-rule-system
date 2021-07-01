@@ -1,10 +1,9 @@
-let RegisterComponent = () => import(/* webpackChunkName: "signup-component" */ "../components/SignupComponent.vue")
-
 const routes = [
     {
         path: '/rules',
 		name: "rules",
-        component: RegisterComponent
+        meta: {auth: true},
+        component: () => import(/* webpackChunkName: "page-target-component" */ "../components/PageTargetComponent.vue")
     },
     {
         path: "/login",
@@ -14,7 +13,7 @@ const routes = [
     {
         path: '/register',
 		name: "register",
-        component: RegisterComponent
+        component: () => import(/* webpackChunkName: "signup-component" */ "../components/SignupComponent.vue")
     }
 ];
 

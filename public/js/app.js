@@ -3199,6 +3199,10 @@ var RegisterComponent = function RegisterComponent() {
 };
 
 var routes = [{
+  path: '/rules',
+  name: "rules",
+  component: RegisterComponent
+}, {
   path: "/login",
   name: "login",
   component: function component() {

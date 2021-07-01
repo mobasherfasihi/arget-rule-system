@@ -150,7 +150,7 @@
                     @click="login()"
                     :loading="false"
                   >
-                    <loading v-if="isloading" width="20px"></loading>
+                    <v-loading v-if="isloading" width="20px"></v-loading>
                     <span
                       v-else
                       class="d-flex align-items-center"

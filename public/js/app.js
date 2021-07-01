@@ -3035,9 +3035,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes/routes */ "./resources/js/routes/routes.js");
 /* harmony import */ var _store_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store/index */ "./resources/js/store/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+
 
 
 
@@ -3049,9 +3051,16 @@ __webpack_require__.r(__webpack_exports__);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
-Vue.store = _store_index__WEBPACK_IMPORTED_MODULE_1__.default;
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+vue__WEBPACK_IMPORTED_MODULE_2__.default.store = _store_index__WEBPACK_IMPORTED_MODULE_1__.default;
+/**
+ * Next, we will create a fresh Vue application instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
+
+vue__WEBPACK_IMPORTED_MODULE_2__.default.use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__.default({
   mode: "history",
   scrollBehavior: function scrollBehavior() {
     return {
@@ -3059,42 +3068,26 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__.default({
       y: 0
     };
   },
-  routes: _routes_routes__WEBPACK_IMPORTED_MODULE_0__.default,
-  linkActiveClass: "tw-font-bold tw-text-primary",
-  // active class for non-exact links.
-  linkExactActiveClass: "tw-font-bold tw-text-primary" // active class for *exact* links.
-
+  routes: _routes_routes__WEBPACK_IMPORTED_MODULE_0__.default
 });
-Vue.router = router;
+vue__WEBPACK_IMPORTED_MODULE_2__.default.router = router;
 /**
  * Adding vue-auth to the vue instance to implement vue authentication
  */
 
 __webpack_require__(/*! ./auth */ "./resources/js/auth.js");
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_2__.default);
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
-// const files = require.context('./', true, /\.vue$/i)
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component("v-loading", __webpack_require__(/*! ./components/LoadingComponent */ "./resources/js/components/LoadingComponent.vue").default);
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-var app = new Vue({
+vue__WEBPACK_IMPORTED_MODULE_2__.default.component("v-loading", __webpack_require__(/*! ./components/LoadingComponent */ "./resources/js/components/LoadingComponent.vue").default);
+var app = new vue__WEBPACK_IMPORTED_MODULE_2__.default({
   store: _store_index__WEBPACK_IMPORTED_MODULE_1__.default,
   mode: history,
   router: router,
   el: "#app"
+}); // Custom global event handler
+// Please do not remove it from there
+
+window.addEventListener("keyup", function (event) {
+  app.$store.dispatch("toggleDropdown", false);
 });
 
 /***/ }),
@@ -3205,11 +3198,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+var RegisterComponent = function RegisterComponent() {
+  return __webpack_require__.e(/*! import() | signup-component */ "signup-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/SignupComponent.vue */ "./resources/js/components/SignupComponent.vue"));
+};
+
 var routes = [{
-  path: "/",
+  path: "/login",
   component: function component() {
     return __webpack_require__.e(/*! import() | login-component */ "login-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/LoginComponent.vue */ "./resources/js/components/LoginComponent.vue"));
   }
+}, {
+  path: '/register',
+  name: "register",
+  component: RegisterComponent
 }];
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);
 
@@ -56043,7 +56044,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "login-component") return "js/" + chunkId + ".js";
+/******/ 			if ({"signup-component":1,"login-component":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

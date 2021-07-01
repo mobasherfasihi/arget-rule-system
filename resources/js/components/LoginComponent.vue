@@ -207,6 +207,7 @@ export default {
   },
 
   mounted() {
+      console.log('test');
   },
 
   methods: {
@@ -255,29 +256,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login {
-    background-color: #fafafa;
-    .illustration-box {
-        background: url(/illustrations/login-illustration.svg);
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        min-height: 100vh;
-        height: 100%;
-    }
-    .or {
-        background-color: #fafafa;
-    }
-}
-.login-line {
-    &::before, &::after  {
-        content: "";
-        height: 1px;
-        // background-color: $color-light-gray;
-        width: 50%;
-    }
-    span {
-        width: 50px;
-    }
-}
 </style>

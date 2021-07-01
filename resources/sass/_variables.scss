@@ -1,0 +1,160 @@
+// Typography
+$font-family-sans-serif: 'Inter', sans-serif;
+$font-size-base: 1rem;
+$font-weight-base: 400;
+$line-height-base: 1.5;
+
+/* Site primary color Map list
+*  for get each of this color
+*  you should user this function
+*  map-get($color-primary-blue, $key)
+*  $key = 100 or 200 ... 1000
+*/
+$color-primary-blue: (
+  "original": #008BCD,
+  "100": #E7F4FA,
+  "200": #B9DFF1,
+  "300": #8BCAE8,
+  "400": #5CB5DF,
+  "500": #2EA0D6,
+  "600": #0072A8,
+  "700": #005983,
+  "800": #00405E,
+  "900": #002638,
+  "1000": #000D13,
+);
+
+$color-green: (
+  "original": #79C000,
+  "100": #F2F9E7,
+  "200": #DAEDB9,
+  "300": #C2E28B,
+  "400": #A9D65C,
+  "500": #91CB2E,
+  "600": #649E00,
+  "700": #4E7B00,
+  "800": #375800,
+  "900": #213500,
+  "1000": #0B1200,
+);
+
+$color-gray: (
+  "original": #334E68,
+  "100": #F0F4F8,
+  "200": #D9E2EC,
+  "300": #BCCCDC,
+  "400": #9FB3C8,
+  "500": #829AB1,
+  "600": #627D98,
+  "700": #486581,
+  "800": #334E68,
+  "900": #243B53,
+  "1000": #102A43,
+);
+
+$color-yellow: (
+  "original": #FFB81C,
+  "100": #FFF8EA,
+  "200": #FFEBC1,
+  "300": #FFDE97,
+  "400": #FFD16E,
+  "500": #FFC445,
+  "600": #D19717,
+  "700": #A37612,
+  "800": #74540D,
+  "900": #463308,
+  "1000": #181103,
+);
+
+$color-red: (
+  "original": #FA4616,
+  "100": #FEEEE9,
+  "200": #FDCCBF,
+  "300": #FCAA95,
+  "400": #FB896A,
+  "500": #FA6740,
+  "600": #CD3A13,
+  "700": #A02D0F,
+  "800": #72200A,
+  "900": #451406,
+  "1000": #170702,
+);
+
+$color-blue: (
+  "original": #00B8DE,
+  "100": #E7F8FC,
+  "200": #B9EBF6,
+  "300": #8BDEF0,
+  "400": #5CD1EA,
+  "500": #2EC4E4,
+  "600": #0097B6,
+  "700": #00768E,
+  "800": #005465,
+  "900": #00333D,
+  "1000": #001115,
+);
+
+$color-neutral: (
+  "100": #F0F4F8,
+  "200": #D9E2EC,
+  "300": #BCCCDC,
+  "400": #9FB3C8,
+  "500": #829AB1,
+  "600": #627D98,
+  "700": #486581,
+  "800": #334E68,
+  "900": #243B53,
+  "1000": #102A43,
+);
+
+// Define color variable
+$body-background-color: map-get($map: $color-neutral, $key: "100");
+$main-blue-lightest: rgb(247, 251, 253);
+$main-gray-lightest: rgb(250, 250, 250);
+
+$color-white: #fff;
+$color-light-gray: map-get($map: $color-gray, $key: "200");
+$text-color-base: map-get($map: $color-gray, $key: "800");
+
+$primary-blue-darkest: map-get($map: $color-primary-blue, $key: "1000");
+$primary-blue-dark: map-get($map: $color-primary-blue, $key: "800");
+$primary-blue-main: map-get($map: $color-primary-blue, $key: "original");
+$primary-blue-light: map-get($map: $color-primary-blue, $key: "200");
+$primary-blue-lightest: map-get($map: $color-primary-blue, $key: "100");
+
+$primary-green-darkest: map-get($map: $color-green, $key: "1000");
+$primary-green-dark: map-get($map: $color-green, $key: "800");
+$primary-green-main: map-get($map: $color-green, $key: "original");
+$primary-green-light: map-get($map: $color-green, $key: "200");
+$primary-green-lightest: map-get($map: $color-green, $key: "100");
+
+$primary-gray-darkest: map-get($map: $color-gray, $key: "1000");
+$primary-gray-dark: map-get($map: $color-gray, $key: "800");
+$primary-gray-main: map-get($map: $color-gray, $key: "original");
+$primary-gray-light: map-get($map: $color-gray, $key: "200");
+$primary-gray-lightest: map-get($map: $color-gray, $key: "100");
+
+$primary-red-darkest: map-get($map: $color-red, $key: "1000");
+$primary-red-dark: map-get($map: $color-red, $key: "800");
+$primary-red-main: map-get($map: $color-red, $key: "original");
+$primary-red-light: map-get($map: $color-red, $key: "200");
+$primary-red-lightest: map-get($map: $color-red, $key: "100");
+
+$primary-yellow-darkest: map-get($map: $color-yellow, $key: "1000");
+$primary-yellow-dark: map-get($map: $color-yellow, $key: "800");
+$primary-yellow-main: map-get($map: $color-yellow, $key: "original");
+$primary-yellow-light: map-get($map: $color-yellow, $key: "200");
+$primary-yellow-lightest: map-get($map: $color-yellow, $key: "100");
+
+$neutral-lightest: map-get($map: $color-neutral, $key: "100");
+$neutral-light: map-get($map: $color-neutral, $key: "200");
+$neutral-main: map-get($map: $color-neutral, $key: "500");
+$neutral-dark: map-get($map: $color-neutral, $key: "800");
+$neutral-darkest: map-get($map: $color-neutral, $key: "1000");
+
+$alert-error-color: $primary-red-main;
+$alert-success-color: $primary-green-main;
+$alert-info-color: $primary-blue-main;
+$alert-warning-color: $primary-yellow-main;
+$alert-dark-color: $primary-gray-main;
+$alert-light-color: $color-white;

@@ -11,7 +11,6 @@ Vue.use(VueAuth, {
     loginData: {
         url: "/api/auth/login",
         method: "POST",
-        fetchUser: true
     },
     logoutData: {
         url: "/auth/logout",

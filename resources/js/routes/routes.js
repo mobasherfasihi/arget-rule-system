@@ -3,6 +3,7 @@ let RegisterComponent = () => import(/* webpackChunkName: "signup-component" */ 
 const routes = [
     {
         path: "/login",
+        name: "login",
         component: () => import(/* webpackChunkName: "login-component" */ "../components/LoginComponent.vue"),
     },
     {

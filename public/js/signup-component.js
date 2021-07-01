@@ -158,25 +158,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         type: "success"
       },
       showPasswordDetails: false,
-      user: {
-        type: 2,
-        phone: ""
-      },
+      user: {},
       errors: [],
-      flag_code: "af",
-      prefix: "93",
-      flags: [],
-      showCountrySearch: false,
       isLoading: false
     };
   },
   methods: {
-    selectCountry: function selectCountry(flag) {
-      this.flag_code = flag.flag_code;
-      this.prefix = flag.phone_code;
-      this.showCountrySearch = false;
-      this.removeValidationMsg("phone_code");
-    },
     register: function register() {
       var _this = this;
 
@@ -184,8 +171,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.isLoading = true;
       user.phone_code = this.prefix;
-      axios.post("/auth/user/register", user).then(function (response) {
-        // { verify: true } means show for user a message about verification link
+      axios.post("/api/auth/user/register", user).then(function (response) {
         _this.isLoading = false;
 
         _this.$router.push({
@@ -204,7 +190,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     removeValidationMsg: function removeValidationMsg(key) {
       if (!this.errors[key]) return;
-      Vue.set(this.errors, key, null);
+      this.Vue.set(this.errors, key, null);
     }
   },
   mounted: function mounted() {
@@ -333,9 +319,7 @@ var render = function() {
                         {
                           staticClass: "form-group",
                           class:
-                            _vm.errors && _vm.errors["first_name"]
-                              ? "has-error"
-                              : ""
+                            _vm.errors && _vm.errors["name"] ? "has-error" : ""
                         },
                         [
                           _vm._m(2),
@@ -606,7 +590,7 @@ var render = function() {
                       },
                       [
                         _vm.isLoading
-                          ? _c("loading", { attrs: { width: "20px" } })
+                          ? _c("v-loading", { attrs: { width: "20px" } })
                           : _c("span", [_vm._v("Register")])
                       ],
                       1
@@ -665,14 +649,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "label",
-      { staticClass: "input-label", attrs: { for: "first_name" } },
-      [
-        _vm._v("\n                    Name\n                    "),
-        _c("span", { staticClass: "required" }, [_vm._v("*")])
-      ]
-    )
+    return _c("label", { staticClass: "input-label", attrs: { for: "name" } }, [
+      _vm._v("\n                    Name\n                    "),
+      _c("span", { staticClass: "required" }, [_vm._v("*")])
+    ])
   },
   function() {
     var _vm = this

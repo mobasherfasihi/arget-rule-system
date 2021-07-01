@@ -3,7 +3,7 @@
     <div class="login" v-if="!isLoggedIn  && !isLoggedInWithSocial">
       <div class="row no-gutters">
         <div class="col-lg-3">
-          <div class="illustration-box bg-white"/>
+          <div class="illustration-box bg-white" />
         </div>
         <div class="col-lg-2"></div>
         <div class="col-lg-4 d-flex flex-column justify-content-center">
@@ -30,16 +30,6 @@
                 >Resend</a>
                 <div class="sp10p"></div>
               </div>
-              <b class="required" v-if="errors && errors['notActive']">
-                {{ errors['notActive'] }}
-                <div class="sp10p"></div>
-              </b>
-              <b class="required" v-if="errors &&  errors['throttle']">
-                {{ errors['throttle'] }}
-                <span class="text-info">{{ counter }}</span>
-                seconds.
-                <div class="sp10p"></div>
-              </b>
               <div
                 class="form-group text-left"
                 :class="errors && errors['email'] ? 'has-error': ''"
@@ -110,10 +100,7 @@
                   class="form-group text-left"
                   :class="(errors && errors['password']) && errors['password'][1] ? 'has-error': ''"
                 >
-                  <label
-                    for="password-confirm"
-                    class="input-label"
-                  >Confirm Password</label>
+                  <label for="password-confirm" class="input-label">Confirm Password</label>
                   <input
                     id="password-confirm"
                     type="password"
@@ -151,10 +138,7 @@
                     :loading="false"
                   >
                     <v-loading v-if="isloading" width="20px"></v-loading>
-                    <span
-                      v-else
-                      class="d-flex align-items-center"
-                    >Login</span>
+                    <span v-else class="d-flex align-items-center">Login</span>
                   </button>
                 </div>
               </div>
@@ -171,14 +155,13 @@
   </section>
 </template>
 <script>
-
 export default {
   data() {
     return {
       googleClientId: 12,
       message: {
         text: null,
-        type: "success"
+        type: "success",
       },
       email: "",
       password: "",
@@ -197,17 +180,21 @@ export default {
       code: null,
       jobsafToken: null,
       otp: false,
-      isOrganization: false
+      isOrganization: false,
     };
   },
-  computed: {
-  },
+  computed: {},
 
-  watch: {
-  },
+  watch: {},
 
   mounted() {
-      console.log('test');
+    if (this.$route.params.verify) {
+      this.message = {
+        text: "A verification link has been sent to your email",
+        type: "success",
+      };
+      this.sendMessage(false);
+    }
   },
 
   methods: {
@@ -219,23 +206,15 @@ export default {
       this.$auth.login({
         data: {
           email: this.email,
-          password: this.password
+          password: this.password,
         },
-        fetchUser: true,
         redirect: null,
-        success() {
+        success(response) {
           this.isLoggingIn = false;
           this.isloading = false;
 
-          let authUser = this.$auth.user();
-          Vue.store.dispatch("setUser", { ...authUser });
-          if (
-            authUser.password_security
-          ) {
-            this.isLoggedIn = true;
-          } else {
-            // this.redirectUser();
-          }
+          let authUser = response.data.userData;
+          this.$store.dispatch("setUser", { ... authUser});
         },
         error(error) {
           this.isloading = false;
@@ -248,10 +227,25 @@ export default {
             this.errors = error.response.data.errors;
             return;
           }
-        }
+          if (error.response.status == 401) {
+            this.errors = {
+              unauthorized: 'Invalid email or password.'
+            };
+            return;
+          }
+          return;
+        },
       });
     },
-  }
+    sendMessage(hasTimer = true) {
+      Bus.$emit("flash-message", this.message, hasTimer);
+
+      this.message = {
+        text: null,
+        type: "success",
+      };
+    },
+  },
 };
 </script>
 

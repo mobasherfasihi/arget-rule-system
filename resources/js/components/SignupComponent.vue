@@ -16,8 +16,8 @@
             <section class="register-panel">
               <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                  <div class="form-group" :class="errors && errors['first_name'] ? 'has-error': ''">
-                    <label for="first_name" class="input-label">
+                  <div class="form-group" :class="errors && errors['name'] ? 'has-error': ''">
+                    <label for="name" class="input-label">
                       Name
                       <span class="required">*</span>
                     </label>
@@ -116,7 +116,7 @@
               <div class="sp20p"></div>
               <div class="form-group d-flex flex-column align-items-center justify-content-between">
                 <button @click="register" type="submit" class="btn btn-primary">
-                  <loading width="20px" v-if="isLoading"></loading>
+                  <v-loading width="20px" v-if="isLoading"></v-loading>
                   <span v-else>Register</span>
                 </button>
                 <div class="text-gray-500 mt-4">
@@ -140,34 +140,20 @@ export default {
         type: "success",
       },
       showPasswordDetails: false,
-      user: {
-        type: 2,
-        phone: "",
-      },
+      user: {},
       errors: [],
-      flag_code: "af",
-      prefix: "93",
-      flags: [],
-      showCountrySearch: false,
       isLoading: false,
     };
   },
 
   methods: {
-    selectCountry(flag) {
-      this.flag_code = flag.flag_code;
-      this.prefix = flag.phone_code;
-      this.showCountrySearch = false;
-      this.removeValidationMsg("phone_code");
-    },
     register() {
       let user = { ...this.user };
       this.isLoading = true;
       user.phone_code = this.prefix;
       axios
-        .post("/auth/user/register", user)
+        .post("/api/auth/user/register", user)
         .then((response) => {
-          // { verify: true } means show for user a message about verification link
           this.isLoading = false;
           this.$router.push({ name: "login", params: { verify: true } });
         })
@@ -184,7 +170,7 @@ export default {
     },
     removeValidationMsg(key) {
       if (!this.errors[key]) return;
-      Vue.set(this.errors, key, null);
+      this.Vue.set(this.errors, key, null);
     },
   },
   mounted() {

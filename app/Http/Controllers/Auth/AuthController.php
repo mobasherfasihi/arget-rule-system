@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Http\Controllers\Auth;
 
-use App\Domain\Users\Models\User;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
+use App\Models\User;
 
 class AuthController extends Controller
 {
@@ -50,16 +52,32 @@ class AuthController extends Controller
 
         $credentials = request(['email', 'password']);
 
-        if (!$token = auth()->attempt($credentials, true)) {
+
+        if (!$token = auth('api')->attempt($credentials, true)) {
             return response()->json(['error' => 'Wrong Email or Password'], 401);
         }
-
-        if (User::findByColumn('email', request('email'))->verified()->count() == 0) {
-            auth()->logout();
-            return response()->json(['verify' => false], 403);
-        }
+        $deactivationTime = auth()->user()->deactivate_time  ? strtotime(auth()->user()->deactivate_time) - strtotime(date('Y-m-d H:i:s')) : null;
+        if ($deactivationTime && $deactivationTime < 0)
+            return response()->json(['error' => 'Account Deleted', 'notActive' => true], 403);
 
         return $this->respondWithToken($token);
+    }
+
+/**
+     * Create a new user instance after a valid registration.
+     *
+     * @param  array  $data
+     * @return \App\User
+     */
+    public function register(UserRequest $data)
+    {
+        $user = new User();
+        $user->name = $data['name'];
+        $user->email = strtolower($data['email']);
+        $user->password = bcrypt($data['password']);
+        $user->save();
+
+        return response()->Json($user);
     }
 
     /**

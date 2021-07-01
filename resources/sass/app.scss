@@ -7,9 +7,24 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.has-error {
+    position: relative;
+    input,
+    select,
+    textarea, .selectbox-header {
+      border-color: $primary-red-main !important;
+      box-shadow: none;
+    }
+    .error-message {
+      color: $primary-red-main;
+    }
+    & .input-group {
+      border: 1px solid $primary-red-main;
+      border-radius: 3px;
+    }
+  }
 
-
-.login , .signup {
+  .login,.signup {
     background-color: #fafafa;
     .illustration-box {
         background: url(/illustrations/login-illustration.svg);
@@ -23,11 +38,11 @@
         background-color: #fafafa;
     }
 }
-.login-line , .signup {
+.login-line,.signup {
     &::before, &::after  {
         content: "";
         height: 1px;
-        // background-color: $color-light-gray;
+        background-color: $color-light-gray;
         width: 50%;
     }
     span {

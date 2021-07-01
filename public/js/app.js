@@ -3052,6 +3052,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+window.Bus = new vue__WEBPACK_IMPORTED_MODULE_2__.default();
 vue__WEBPACK_IMPORTED_MODULE_2__.default.store = _store_index__WEBPACK_IMPORTED_MODULE_1__.default;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -3118,8 +3119,7 @@ vue__WEBPACK_IMPORTED_MODULE_3__.default.use((_websanova_vue_auth__WEBPACK_IMPOR
   router: __webpack_require__(/*! @websanova/vue-auth/drivers/router/vue-router.2.x.js */ "./node_modules/@websanova/vue-auth/drivers/router/vue-router.2.x.js"),
   loginData: {
     url: "/api/auth/login",
-    method: "POST",
-    fetchUser: true
+    method: "POST"
   },
   logoutData: {
     url: "/auth/logout",
@@ -3204,6 +3204,7 @@ var RegisterComponent = function RegisterComponent() {
 
 var routes = [{
   path: "/login",
+  name: "login",
   component: function component() {
     return __webpack_require__.e(/*! import() | login-component */ "login-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/LoginComponent.vue */ "./resources/js/components/LoginComponent.vue"));
   }

@@ -18,5 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Api')->group(function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', [AuthController::class, 'login']);
+        Route::prefix('user')->group(function() {
+            Route::post('register', [AuthController::class, 'register']);
+        });
     });
 });

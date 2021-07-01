@@ -173,22 +173,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -220,7 +204,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: {},
   watch: {},
   mounted: function mounted() {
-    console.log('test');
+    if (this.$route.params.verify) {
+      this.message = {
+        text: "A verification link has been sent to your email",
+        type: "success"
+      };
+      this.sendMessage(false);
+    }
   },
   methods: {
     login: function login() {
@@ -232,18 +222,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           email: this.email,
           password: this.password
         },
-        fetchUser: true,
         redirect: null,
-        success: function success() {
+        success: function success(response) {
           this.isLoggingIn = false;
           this.isloading = false;
-          var authUser = this.$auth.user();
-          Vue.store.dispatch("setUser", _objectSpread({}, authUser));
-
-          if (authUser.password_security) {
-            this.isLoggedIn = true;
-          } else {// this.redirectUser();
-          }
+          var authUser = response.data.userData;
+          this.$store.dispatch("setUser", _objectSpread({}, authUser));
         },
         error: function error(_error) {
           this.isloading = false;
@@ -253,8 +237,25 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             this.errors = _error.response.data.errors;
             return;
           }
+
+          if (_error.response.status == 401) {
+            this.errors = {
+              unauthorized: 'Invalid email or password.'
+            };
+            return;
+          }
+
+          return;
         }
       });
+    },
+    sendMessage: function sendMessage() {
+      var hasTimer = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+      Bus.$emit("flash-message", this.message, hasTimer);
+      this.message = {
+        text: null,
+        type: "success"
+      };
     }
   }
 });
@@ -421,32 +422,6 @@ var render = function() {
                             _c("div", { staticClass: "sp10p" })
                           ]
                         )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors["notActive"]
-                      ? _c("b", { staticClass: "required" }, [
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(_vm.errors["notActive"]) +
-                              "\n              "
-                          ),
-                          _c("div", { staticClass: "sp10p" })
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.errors && _vm.errors["throttle"]
-                      ? _c("b", { staticClass: "required" }, [
-                          _vm._v(
-                            "\n              " +
-                              _vm._s(_vm.errors["throttle"]) +
-                              "\n              "
-                          ),
-                          _c("span", { staticClass: "text-info" }, [
-                            _vm._v(_vm._s(_vm.counter))
-                          ]),
-                          _vm._v("\n              seconds.\n              "),
-                          _c("div", { staticClass: "sp10p" })
-                        ])
                       : _vm._e(),
                     _vm._v(" "),
                     _c(

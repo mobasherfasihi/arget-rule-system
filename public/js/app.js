@@ -3287,14 +3287,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 var routes = [{
-  path: '/rules',
-  name: "rules",
+  path: "/rules",
   meta: {
     auth: true
   },
-  component: function component() {
-    return __webpack_require__.e(/*! import() | page-target-component */ "page-target-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/PageTargetComponent.vue */ "./resources/js/components/PageTargetComponent.vue"));
-  }
+  component: {
+    render: function render(c) {
+      return c('router-view');
+    }
+  },
+  children: [{
+    path: '/',
+    name: "rules",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | page-target-component */ "page-target-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/pageTarget/ListComponent.vue */ "./resources/js/components/pageTarget/ListComponent.vue"));
+    }
+  }, {
+    path: "add",
+    name: "page-target-add",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | page-target-add-component */ "page-target-add-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/pageTarget/AddComponent.vue */ "./resources/js/components/pageTarget/AddComponent.vue"));
+    }
+  }]
 }, {
   path: "/login",
   name: "login",
@@ -3302,7 +3316,7 @@ var routes = [{
     return __webpack_require__.e(/*! import() | login-component */ "login-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/LoginComponent.vue */ "./resources/js/components/LoginComponent.vue"));
   }
 }, {
-  path: '/register',
+  path: "/register",
   name: "register",
   component: function component() {
     return __webpack_require__.e(/*! import() | signup-component */ "signup-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/SignupComponent.vue */ "./resources/js/components/SignupComponent.vue"));
@@ -56354,7 +56368,7 @@ var index = {
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"page-target-component":1,"login-component":1,"signup-component":1,"resources_js_components_renderLess_DataList_js":1,"resources_js_components_renderLess_DataModel_js":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"page-target-component":1,"page-target-add-component":1,"login-component":1,"signup-component":1,"resources_js_components_renderLess_DataList_js":1,"resources_js_components_renderLess_DataModel_js":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

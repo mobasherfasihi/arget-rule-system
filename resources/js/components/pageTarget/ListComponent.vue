@@ -4,7 +4,7 @@
     <div class="container my-5">
       <div class="d-flex justify-content-between align-items-center">
         <h2 class="mb-4">Page Targeting List</h2>
-        <button type="button" class="btn btn-primary">Add</button>
+        <button type="button" class="btn btn-primary" @click="create">Add</button>
       </div>
       <data-list :endpoint="endpoint" :filter="filters" :filterKey="'filters'">
         <div slot-scope="{ data: pagetTargets, error, load, loading }">
@@ -86,8 +86,8 @@
 <script>
 export default {
   components: {
-    DataList: () => import("./renderLess/DataList"),
-    DataModel: () => import("./renderLess/DataModel"),
+    DataList: () => import("../renderLess/DataList"),
+    DataModel: () => import("../renderLess/DataModel"),
   },
   data() {
     return {
@@ -111,6 +111,9 @@ export default {
     setPage() {
       this.filters.page = this.pagination.current_page;
     },
+    create() {
+      this.$router.push({name: 'page-target-add'})
+    }
   },
 };
 </script>

@@ -104,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
       targetPage: {
         title: null,
         alert_message: null,
-        targetRules: [{
+        target_rules: [{
           instruction: null,
           rule: null,
           pattern: null
@@ -114,21 +114,15 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addMoreRule: function addMoreRule(index) {
-      if (this.targetPage.targetRules[index].instruction) {
-        // this.validationInfo["skills." + index] &&
-        //   delete this.validationInfo["skills." + index];
+      if (this.targetPage.target_rules[index].instruction) {
         if (index > 0) {
-          for (var i = 0; i < index; i++) {
-            if (i + 1 == index) {
-              this.targetPage.targetRules.push({
-                instruction: null,
-                rule: null,
-                pattern: null
-              });
-            }
-          }
+          this.targetPage.target_rules.push({
+            instruction: null,
+            rule: null,
+            pattern: null
+          });
         } else {
-          this.targetPage.targetRules.push({
+          this.targetPage.target_rules.push({
             instruction: null,
             rule: null,
             pattern: null
@@ -138,13 +132,13 @@ __webpack_require__.r(__webpack_exports__);
     },
     removeElement: function removeElement(index) {
       if (index == 0) {
-        Vue.set(this.targetPage.targetRules, 0, {
+        Vue.set(this.targetPage.target_rules, 0, {
           instruction: null,
           rule: null,
           pattern: null
         });
       } else {
-        this.targetPage.targetRules.splice(index, 1);
+        this.targetPage.target_rules.splice(index, 1);
       }
     }
   }
@@ -253,7 +247,7 @@ var render = function() {
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
-          _vm._l(_vm.targetPage.targetRules, function(targetRule, index) {
+          _vm._l(_vm.targetPage.target_rules, function(targetRule, index) {
             return _c(
               "div",
               { key: "targetRule-" + index, staticClass: "form-row" },
@@ -270,9 +264,9 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.targetPage.targetRules[index].instruction,
+                          value: _vm.targetPage.target_rules[index].instruction,
                           expression:
-                            "targetPage.targetRules[index].instruction"
+                            "targetPage.target_rules[index].instruction"
                         }
                       ],
                       staticClass: "form-control",
@@ -288,7 +282,7 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            _vm.targetPage.targetRules[index],
+                            _vm.targetPage.target_rules[index],
                             "instruction",
                             $event.target.multiple
                               ? $$selectedVal
@@ -327,8 +321,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.targetPage.targetRules[index].rule,
-                          expression: "targetPage.targetRules[index].rule"
+                          value: _vm.targetPage.target_rules[index].rule,
+                          expression: "targetPage.target_rules[index].rule"
                         }
                       ],
                       staticClass: "form-control",
@@ -344,7 +338,7 @@ var render = function() {
                               return val
                             })
                           _vm.$set(
-                            _vm.targetPage.targetRules[index],
+                            _vm.targetPage.target_rules[index],
                             "rule",
                             $event.target.multiple
                               ? $$selectedVal
@@ -392,8 +386,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.targetPage.targetRules[index].pattern,
-                          expression: "targetPage.targetRules[index].pattern"
+                          value: _vm.targetPage.target_rules[index].pattern,
+                          expression: "targetPage.target_rules[index].pattern"
                         }
                       ],
                       staticClass: "form-control",
@@ -403,7 +397,7 @@ var render = function() {
                         "aria-describedby": "basic-addon3"
                       },
                       domProps: {
-                        value: _vm.targetPage.targetRules[index].pattern
+                        value: _vm.targetPage.target_rules[index].pattern
                       },
                       on: {
                         input: function($event) {
@@ -411,7 +405,7 @@ var render = function() {
                             return
                           }
                           _vm.$set(
-                            _vm.targetPage.targetRules[index],
+                            _vm.targetPage.target_rules[index],
                             "pattern",
                             $event.target.value
                           )
@@ -427,8 +421,8 @@ var render = function() {
                     staticClass: "form-group col-md-2 d-flex align-items-center"
                   },
                   [
-                    index + 1 == _vm.targetPage.targetRules.length &&
-                    _vm.targetPage.targetRules[0].instruction
+                    index + 1 == _vm.targetPage.target_rules.length &&
+                    _vm.targetPage.target_rules[0].instruction
                       ? _c(
                           "a",
                           {
@@ -447,8 +441,8 @@ var render = function() {
                         )
                       : _vm._e(),
                     _vm._v(" "),
-                    _vm.targetPage.targetRules.length &&
-                    _vm.targetPage.targetRules[0].instruction &&
+                    _vm.targetPage.target_rules.length &&
+                    _vm.targetPage.target_rules[0].instruction &&
                     index > 0
                       ? _c(
                           "a",

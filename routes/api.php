@@ -25,5 +25,6 @@ Route::namespace('Api')->group(function () {
     });
     Route::prefix('page-target')->middleware('auth')->group(function() {
         Route::get('', [PageTargetController::class, 'index']);
+        Route::post('', [PageTargetController::class, 'store']);
     });
 });

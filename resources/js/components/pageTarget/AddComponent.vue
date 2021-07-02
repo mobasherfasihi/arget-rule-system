@@ -18,14 +18,14 @@
         <div
           class="form-row"
           :key="`targetRule-${index}`"
-          v-for="(targetRule, index) in targetPage.targetRules"
+          v-for="(targetRule, index) in targetPage.target_rules"
         >
           <div class="form-group col-md-2">
             <label for="inputState">Instruction</label>
             <select
               id="inputState"
               class="form-control"
-              v-model="targetPage.targetRules[index].instruction"
+              v-model="targetPage.target_rules[index].instruction"
             >
               <option :value="null" selected>Choose...</option>
               <option value="show">Show on</option>
@@ -37,7 +37,7 @@
             <select
               id="inputState"
               class="form-control"
-              v-model="targetPage.targetRules[index].rule"
+              v-model="targetPage.target_rules[index].rule"
             >
               <option :value="null" selected>Select Rule</option>
               <option value="contain">pages that contain</option>
@@ -57,14 +57,14 @@
                 class="form-control"
                 id="basic-url"
                 aria-describedby="basic-addon3"
-                v-model="targetPage.targetRules[index].pattern"
+                v-model="targetPage.target_rules[index].pattern"
               />
             </div>
           </div>
           <div class="form-group col-md-2 d-flex align-items-center">
             <a
               href="javascript:void(0)"
-              v-if="index + 1 == targetPage.targetRules.length && targetPage.targetRules[0].instruction"
+              v-if="index + 1 == targetPage.target_rules.length && targetPage.target_rules[0].instruction"
               @click="addMoreRule(index)"
             >
               <small class="text-primary-green">Add</small>
@@ -72,7 +72,7 @@
             <a
               href="javascript:void(0)"
               class="ml-2"
-              v-if="targetPage.targetRules.length && targetPage.targetRules[0].instruction && index > 0"
+              v-if="targetPage.target_rules.length && targetPage.target_rules[0].instruction && index > 0"
               @click="removeElement(index)"
             >
               <small class="text-danger">Remove</small>
@@ -92,7 +92,7 @@ export default {
       targetPage: {
         title: null,
         alert_message: null,
-        targetRules: [
+        target_rules: [
           {
             instruction: null,
             rule: null,
@@ -104,21 +104,15 @@ export default {
   },
   methods: {
     addMoreRule: function (index) {
-      if (this.targetPage.targetRules[index].instruction) {
-        // this.validationInfo["skills." + index] &&
-        //   delete this.validationInfo["skills." + index];
+      if (this.targetPage.target_rules[index].instruction) {
         if (index > 0) {
-          for (let i = 0; i < index; i++) {
-            if (i + 1 == index) {
-              this.targetPage.targetRules.push({
-                instruction: null,
-                rule: null,
-                pattern: null,
-              });
-            }
-          }
+          this.targetPage.target_rules.push({
+            instruction: null,
+            rule: null,
+            pattern: null,
+          });
         } else {
-          this.targetPage.targetRules.push({
+          this.targetPage.target_rules.push({
             instruction: null,
             rule: null,
             pattern: null,
@@ -128,13 +122,13 @@ export default {
     },
     removeElement: function (index) {
       if (index == 0) {
-        Vue.set(this.targetPage.targetRules, 0, {
+        Vue.set(this.targetPage.target_rules, 0, {
           instruction: null,
           rule: null,
           pattern: null,
         });
       } else {
-        this.targetPage.targetRules.splice(index, 1);
+        this.targetPage.target_rules.splice(index, 1);
       }
     },
   },

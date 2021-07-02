@@ -3,8 +3,10 @@
 namespace Tests\Feature;
 
 use App\Models\PageTarget;
+use App\Models\TargetRule;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Arr;
 use Tests\Feature\Helpers\ActingJwtUser;
 use Tests\Feature\Helpers\CreateApplicationUser;
 use Tests\TestCase;
@@ -14,7 +16,7 @@ class PageTargetTest extends TestCase
     use ActingJwtUser;
     use CreateApplicationUser;
     use WithFaker;
-    use RefreshDatabase;
+    // use RefreshDatabase;
 
     private $user;
     private $pageTargets = [];
@@ -39,5 +41,18 @@ class PageTargetTest extends TestCase
     {
         $response = $this->json('GET', 'api/page-target');
         $response->assertStatus(401);
+    }
+
+    /**@test */
+    public function test_should_create_page_target_with_target_rules()
+    {
+        $data = PageTarget::factory()->has(TargetRule::factory()->count(6))->create();
+        $rules = $data->targetRules()->get(['instruction', 'rule', 'pattern', 'regex_pattern'])->toArray();
+        $data = Arr::except($data->toArray(), 'id');
+        $data['target_rules'] = $rules;
+
+        $response = $this->jsonAs($this->user, 'POST', 'api/page-target', $data);
+
+        $response->assertOk();
     }
 }

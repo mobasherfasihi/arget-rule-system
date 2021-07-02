@@ -9,6 +9,7 @@ class TargetRule extends Model
 {
     use HasFactory;
 
+
     public function page()
     {
         return  $this->belongsTo(PageTarget::class, 'page_target_id',  'id');

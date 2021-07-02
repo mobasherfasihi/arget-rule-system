@@ -140,7 +140,8 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.targetPage.target_rules.splice(index, 1);
       }
-    }
+    },
+    createRule: function createRule() {}
   }
 });
 
@@ -470,8 +471,12 @@ var render = function() {
           _vm._v(" "),
           _c(
             "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Save")]
+            {
+              staticClass: "btn btn-primary",
+              attrs: { type: "submit" },
+              on: { click: _vm.createRule }
+            },
+            [_vm._v("Add Rule")]
           )
         ],
         2

@@ -23,8 +23,9 @@ Route::namespace('Api')->group(function () {
             Route::post('register', [AuthController::class, 'register']);
         });
     });
-    Route::prefix('page-target')->middleware('auth')->group(function() {
-        Route::get('', [PageTargetController::class, 'index']);
-        Route::post('', [PageTargetController::class, 'store']);
+    Route::prefix('page-target')->group(function() {
+        Route::get('', [PageTargetController::class, 'index'])->middleware('auth');
+        Route::post('', [PageTargetController::class, 'store'])->middleware('auth');
+        Route::get('{id}/pattern', [PageTargetController::class, 'fetchPattern']);
     });
 });

@@ -79,7 +79,7 @@
             </a>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary" @click="createRule">Add Rule</button>
       </form>
     </div>
   </section>
@@ -131,6 +131,10 @@ export default {
         this.targetPage.target_rules.splice(index, 1);
       }
     },
+
+    createRule() {
+
+    }
   },
 };
 </script>

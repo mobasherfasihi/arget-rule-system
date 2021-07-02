@@ -103,4 +103,9 @@ class PageTargetController extends Controller
     {
         //
     }
+
+    public function fetchPattern($pageTargetID)
+    {
+        return response()->json(PageTarget::find($pageTargetID)->get(['target_rule', 'alert_message']));
+    }
 }

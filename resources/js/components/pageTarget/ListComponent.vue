@@ -19,6 +19,7 @@
                 <th>Title</th>
                 <th>Message</th>
                 <th>Number of Rules</th>
+                <th>Pattern</th>
                 <th>Actions</th>
               </thead>
               <tbody v-if="loading || pagetTargets.data.length == 0">
@@ -51,20 +52,21 @@
                       <td>{{ pTarget.title }}</td>
                       <td>{{ pTarget.alert_message}}</td>
                       <td>{{ pTarget.target_rules_count}}</td>
+                      <td>{{ pTarget.target_rule}}</td>
                       <td style="width: 10%">
                         <ul class="list actions d-flex justify-content-center">
                           <li @click="viewPTarget(pTarget)" class="mx-2">
-                            <span class="text-sm text-gray-500 fa fa-eye"></span>
+                            <span class="text-sm text-gray-500">View</span>
                           </li>
                           <li @click="edit(pTarget)" class="mx-2">
-                            <span class="text-sm text-gray-500 icon-edit"></span>
+                            <span class="text-sm text-gray-500">Edit</span>
                           </li>
                           <li :disabled="loading" @click="delet(pTarget)" class="mx-2">
                             <template v-if="loading && targetPTarget == pTarget.id">
                               <v-loading width="20px"></v-loading>
                             </template>
                             <template v-else>
-                              <span class="text-sm text-gray-500 icon-trash"></span>
+                              <span class="text-sm text-gray-500">Delete</span>
                             </template>
                           </li>
                         </ul>

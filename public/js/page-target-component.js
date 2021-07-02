@@ -101,6 +101,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     DataList: function DataList() {
@@ -311,6 +313,8 @@ var render = function() {
                         _vm._v(" "),
                         _c("th", [_vm._v("Number of Rules")]),
                         _vm._v(" "),
+                        _c("th", [_vm._v("Pattern")]),
+                        _vm._v(" "),
                         _c("th", [_vm._v("Actions")])
                       ]),
                       _vm._v(" "),
@@ -406,6 +410,12 @@ var render = function() {
                                                   )
                                                 ]),
                                                 _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(pTarget.target_rule)
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
                                                 _c(
                                                   "td",
                                                   {
@@ -436,10 +446,14 @@ var render = function() {
                                                             }
                                                           },
                                                           [
-                                                            _c("span", {
-                                                              staticClass:
-                                                                "text-sm text-gray-500 fa fa-eye"
-                                                            })
+                                                            _c(
+                                                              "span",
+                                                              {
+                                                                staticClass:
+                                                                  "text-sm text-gray-500"
+                                                              },
+                                                              [_vm._v("View")]
+                                                            )
                                                           ]
                                                         ),
                                                         _vm._v(" "),
@@ -458,10 +472,14 @@ var render = function() {
                                                             }
                                                           },
                                                           [
-                                                            _c("span", {
-                                                              staticClass:
-                                                                "text-sm text-gray-500 icon-edit"
-                                                            })
+                                                            _c(
+                                                              "span",
+                                                              {
+                                                                staticClass:
+                                                                  "text-sm text-gray-500"
+                                                              },
+                                                              [_vm._v("Edit")]
+                                                            )
                                                           ]
                                                         ),
                                                         _vm._v(" "),
@@ -498,10 +516,18 @@ var render = function() {
                                                                   )
                                                                 ]
                                                               : [
-                                                                  _c("span", {
-                                                                    staticClass:
-                                                                      "text-sm text-gray-500 icon-trash"
-                                                                  })
+                                                                  _c(
+                                                                    "span",
+                                                                    {
+                                                                      staticClass:
+                                                                        "text-sm text-gray-500"
+                                                                    },
+                                                                    [
+                                                                      _vm._v(
+                                                                        "Delete"
+                                                                      )
+                                                                    ]
+                                                                  )
                                                                 ]
                                                           ],
                                                           2

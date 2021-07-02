@@ -48,7 +48,7 @@ trait TargetRuleTrait
         $data['pattern'] = str_replace('/', '\/', $data['pattern']);
 
         $regStr = match ($data['rule']) {
-            'contains' => '(?='.$instruction.'.*'.$data['pattern'].'.*)',
+            'contains' => '(?'.$instruction.'.*'.$data['pattern'].'.*)',
             'specific_page' => match($instruction) {
                 '!' => '^(?!'.$data['pattern'].')',
                 '=' => '(?='.$data['pattern'].')'

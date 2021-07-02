@@ -49,3 +49,27 @@
         width: 50px;
     }
 }
+
+.pagination {
+    .btn {
+      height: 40px;
+      border-radius: 10px;
+      background-color: map-get($map: $color-gray, $key: '50');
+    }
+    ul {
+      background-color: map-get($map: $color-gray, $key: '50');
+      a {
+        color: map-get($map: $color-gray, $key: '400');
+        &.active {
+          color: map-get($map: $color-gray, $key: '400') !important;
+          border-bottom: 1px solid map-get($map: $color-gray, $key: '600');
+        }
+      }
+    }
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }

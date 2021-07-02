@@ -10049,3 +10049,21 @@ h3 {
 .login-line span, .signup span {
   width: 50px;
 }
+
+.pagination .btn {
+  height: 40px;
+  border-radius: 10px;
+}
+.pagination ul a {
+  color: #9FB3C8;
+}
+.pagination ul a.active {
+  color: #9FB3C8 !important;
+  border-bottom: 1px solid #627D98;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}

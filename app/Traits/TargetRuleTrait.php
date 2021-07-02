@@ -9,7 +9,7 @@ trait TargetRuleTrait
 {
 
     /**
-     * Create Business User
+     * Create Target Rules
      *
      * @param array $ruleData
      * @param int $pageTargetID
@@ -18,8 +18,7 @@ trait TargetRuleTrait
     public function createTargetRule(array $ruleData, int $pageTargetID) :void
     {
         $data  = [];
-        // $dataArray = array_column($ruleData, 'instruction');
-        // array_multisort($dataArray, SORT_ASC, $ruleData);
+
         foreach($ruleData as $row) {
             $data[] = [
                 'instruction' => $row['instruction'],

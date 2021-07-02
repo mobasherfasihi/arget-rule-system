@@ -7,11 +7,11 @@
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="targetTitle">Title</label>
-            <input type="text" class="form-control" id="targetTitle" placeholder="Title" />
+            <input type="text" class="form-control" id="targetTitle" placeholder="Title" v-model="targetPage.title" />
           </div>
           <div class="form-group col-md-6">
             <label for="alertMessage">Alert Message</label>
-            <input type="text" class="form-control" id="alertMessage" placeholder="Alert Message" />
+            <input type="text" class="form-control" id="alertMessage" placeholder="Alert Message" v-model="targetPage.alert_message"/>
           </div>
         </div>
         <hr />
@@ -40,7 +40,7 @@
               v-model="targetPage.target_rules[index].rule"
             >
               <option :value="null" selected>Select Rule</option>
-              <option value="contain">pages that contain</option>
+              <option value="contains">pages that contain</option>
               <option value="specific_page">a specific page</option>
               <option value="starting_with">pages starting with</option>
               <option value="ending_with">pages ending with</option>
@@ -79,7 +79,7 @@
             </a>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary" @click="createRule">Add Rule</button>
+        <button type="button" class="btn btn-primary" @click="createRule">Add Rule</button>
       </form>
     </div>
   </section>
@@ -133,8 +133,21 @@ export default {
     },
 
     createRule() {
-
-    }
+      axios
+        .post("/api/page-target", this.targetPage)
+        .then((response) => {
+            this.$router.push({name: 'rules', params: {message: "Rule is created successfully"}});
+        })
+        .catch((error) => {
+          if (
+            error.response.status == 422 &&
+            error.response.data.hasOwnProperty("errors")
+          ) {
+            this.errors = error.response.data.errors;
+            return;
+          }
+        });
+    },
   },
 };
 </script>

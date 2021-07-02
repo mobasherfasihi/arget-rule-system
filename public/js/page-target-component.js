@@ -96,6 +96,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     DataList: function DataList() {
@@ -120,8 +125,14 @@ __webpack_require__.r(__webpack_exports__);
         text: null,
         autoDismiss: true
       },
-      showAlert: false
+      showAlert: false,
+      alertMessage: null
     };
+  },
+  mounted: function mounted() {
+    if (this.$route.params && this.$route.params.message) {
+      this.showAlertMessage(this.$route.params.message);
+    }
   },
   methods: {
     setPage: function setPage() {
@@ -129,8 +140,21 @@ __webpack_require__.r(__webpack_exports__);
     },
     create: function create() {
       this.$router.push({
-        name: 'page-target-add'
+        name: "page-target-add"
       });
+    },
+    showAlertMessage: function showAlertMessage(message) {
+      var _this = this;
+
+      this.showAlert = true;
+      this.alertMessage = message;
+      setTimeout(function () {
+        return _this.closeAlertMessage();
+      }, 5000);
+    },
+    closeAlertMessage: function closeAlertMessage() {
+      this.showAlert = false;
+      this.alertMessage = "";
     }
   }
 });
@@ -232,6 +256,19 @@ var render = function() {
       "div",
       { staticClass: "container my-5" },
       [
+        _c(
+          "transition",
+          { attrs: { name: "fade", mode: "out-in" } },
+          [
+            _vm.showAlert
+              ? _c("v-alert", { on: { onClose: _vm.closeAlertMessage } }, [
+                  _c("p", [_vm._v(_vm._s(this.alertMessage))])
+                ])
+              : _vm._e()
+          ],
+          1
+        ),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "d-flex justify-content-between align-items-center" },
@@ -363,7 +400,9 @@ var render = function() {
                                                 _vm._v(" "),
                                                 _c("td", [
                                                   _vm._v(
-                                                    _vm._s(pTarget.rules_count)
+                                                    _vm._s(
+                                                      pTarget.target_rules_count
+                                                    )
                                                   )
                                                 ]),
                                                 _vm._v(" "),

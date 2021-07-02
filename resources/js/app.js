@@ -42,6 +42,7 @@ require("./auth");
 
 Vue.component("v-loading", require("./components/LoadingComponent").default);
 Vue.component("v-pagination", require("./components/shared/Pagination").default);
+Vue.component("v-alert", require("./components/shared/Alert").default);
 
 const app = new Vue({
   store,

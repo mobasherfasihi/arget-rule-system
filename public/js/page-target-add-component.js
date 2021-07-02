@@ -141,7 +141,23 @@ __webpack_require__.r(__webpack_exports__);
         this.targetPage.target_rules.splice(index, 1);
       }
     },
-    createRule: function createRule() {}
+    createRule: function createRule() {
+      var _this = this;
+
+      axios.post("/api/page-target", this.targetPage).then(function (response) {
+        _this.$router.push({
+          name: 'rules',
+          params: {
+            message: "Rule is created successfully"
+          }
+        });
+      })["catch"](function (error) {
+        if (error.response.status == 422 && error.response.data.hasOwnProperty("errors")) {
+          _this.errors = error.response.data.errors;
+          return;
+        }
+      });
+    }
   }
 });
 
@@ -244,7 +260,73 @@ var render = function() {
       _c(
         "form",
         [
-          _vm._m(0),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-6" }, [
+              _c("label", { attrs: { for: "targetTitle" } }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.targetPage.title,
+                    expression: "targetPage.title"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "targetTitle",
+                  placeholder: "Title"
+                },
+                domProps: { value: _vm.targetPage.title },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.targetPage, "title", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-6" }, [
+              _c("label", { attrs: { for: "alertMessage" } }, [
+                _vm._v("Alert Message")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.targetPage.alert_message,
+                    expression: "targetPage.alert_message"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: {
+                  type: "text",
+                  id: "alertMessage",
+                  placeholder: "Alert Message"
+                },
+                domProps: { value: _vm.targetPage.alert_message },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(
+                      _vm.targetPage,
+                      "alert_message",
+                      $event.target.value
+                    )
+                  }
+                }
+              })
+            ])
+          ]),
           _vm._v(" "),
           _c("hr"),
           _vm._v(" "),
@@ -355,7 +437,7 @@ var render = function() {
                         [_vm._v("Select Rule")]
                       ),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "contain" } }, [
+                      _c("option", { attrs: { value: "contains" } }, [
                         _vm._v("pages that contain")
                       ]),
                       _vm._v(" "),
@@ -380,7 +462,7 @@ var render = function() {
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "input-group mb-3" }, [
-                    _vm._m(1, true),
+                    _vm._m(0, true),
                     _vm._v(" "),
                     _c("input", {
                       directives: [
@@ -473,7 +555,7 @@ var render = function() {
             "button",
             {
               staticClass: "btn btn-primary",
-              attrs: { type: "submit" },
+              attrs: { type: "button" },
               on: { click: _vm.createRule }
             },
             [_vm._v("Add Rule")]
@@ -485,36 +567,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-row" }, [
-      _c("div", { staticClass: "form-group col-md-6" }, [
-        _c("label", { attrs: { for: "targetTitle" } }, [_vm._v("Title")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "targetTitle", placeholder: "Title" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-group col-md-6" }, [
-        _c("label", { attrs: { for: "alertMessage" } }, [
-          _vm._v("Alert Message")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: {
-            type: "text",
-            id: "alertMessage",
-            placeholder: "Alert Message"
-          }
-        })
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

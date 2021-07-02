@@ -2,6 +2,11 @@
   <section id="page-target-list">
     <div class="height-20p"></div>
     <div class="container my-5">
+      <transition name="fade" mode="out-in">
+        <v-alert v-if="showAlert" @onClose="closeAlertMessage">
+          <p>{{ this.alertMessage }}</p>
+        </v-alert>
+      </transition>
       <div class="d-flex justify-content-between align-items-center">
         <h2 class="mb-4">Page Targeting List</h2>
         <button type="button" class="btn btn-primary" @click="create">Add</button>
@@ -45,7 +50,7 @@
                     >
                       <td>{{ pTarget.title }}</td>
                       <td>{{ pTarget.alert_message}}</td>
-                      <td>{{ pTarget.rules_count}}</td>
+                      <td>{{ pTarget.target_rules_count}}</td>
                       <td style="width: 10%">
                         <ul class="list actions d-flex justify-content-center">
                           <li @click="viewPTarget(pTarget)" class="mx-2">
@@ -105,15 +110,33 @@ export default {
         autoDismiss: true,
       },
       showAlert: false,
+      alertMessage: null,
     };
+  },
+  mounted() {
+    if (this.$route.params && this.$route.params.message) {
+      this.showAlertMessage(this.$route.params.message);
+    }
   },
   methods: {
     setPage() {
       this.filters.page = this.pagination.current_page;
     },
     create() {
-      this.$router.push({name: 'page-target-add'})
-    }
+      this.$router.push({ name: "page-target-add" });
+    },
+
+    showAlertMessage(message) {
+      this.showAlert = true;
+      this.alertMessage = message;
+
+      setTimeout(() => this.closeAlertMessage(), 5000);
+    },
+
+    closeAlertMessage() {
+      this.showAlert = false;
+      this.alertMessage = "";
+    },
   },
 };
 </script>

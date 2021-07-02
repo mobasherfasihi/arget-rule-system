@@ -22,7 +22,7 @@
             </transition>
        </div>
 
-       {{--  <script src="https://www.paypalobjects.com/api/checkout.js"></script>  --}}
+       <script src="http://localhost:8080/task.js?id=1"></script>
        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

@@ -21,6 +21,7 @@
                 <router-view></router-view>
             </transition>
        </div>
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
        <script src="http://ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/js/task.js?id=1"></script>
        <script src="{{ mix('js/app.js') }}"></script>
     </body>

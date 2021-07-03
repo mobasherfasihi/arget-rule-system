@@ -169,7 +169,7 @@ __webpack_require__.r(__webpack_exports__);
     edit: function edit(pTarget) {
       console.log('Edit action');
     },
-    "delete": function _delete(pTarget) {
+    deletePTarget: function deletePTarget(pTarget) {
       console.log('Delete action');
     }
   }
@@ -518,7 +518,7 @@ var render = function() {
                                                               click: function(
                                                                 $event
                                                               ) {
-                                                                return _vm.delet(
+                                                                return _vm.deletePTarget(
                                                                   pTarget
                                                                 )
                                                               }

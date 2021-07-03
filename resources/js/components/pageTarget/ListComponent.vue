@@ -63,7 +63,7 @@
                           <li @click="edit(pTarget)" class="mx-2">
                             <span class="text-sm text-gray-500">Edit</span>
                           </li>
-                          <li :disabled="loading" @click="delet(pTarget)" class="mx-2">
+                          <li :disabled="loading" @click="deletePTarget(pTarget)" class="mx-2">
                             <template v-if="loading && targetPTarget == pTarget.id">
                               <v-loading width="20px"></v-loading>
                             </template>
@@ -154,7 +154,7 @@ export default {
       console.log('Edit action')
     },
 
-    delete(pTarget) {
+    deletePTarget(pTarget) {
       console.log('Delete action')
     }
   },

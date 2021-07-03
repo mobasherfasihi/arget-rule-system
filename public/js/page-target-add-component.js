@@ -145,10 +145,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.post("/api/page-target", this.targetPage).then(function (response) {
+        var link = "".concat(config.APP_URL, "/js/task.js?id=").concat(response.data.id);
+
         _this.$router.push({
           name: 'rules',
           params: {
-            message: "Rule is created successfully"
+            message: "Rule is created successfully",
+            link: '<script src="' + link + '">'
           }
         });
       })["catch"](function (error) {

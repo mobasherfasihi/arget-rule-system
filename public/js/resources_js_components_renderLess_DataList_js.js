@@ -237,18 +237,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
-/***/ "./resources/js/vue.config.js":
-/*!************************************!*\
-  !*** ./resources/js/vue.config.js ***!
-  \************************************/
-/***/ ((module) => {
-
-module.exports = {
-  BASE_URL: "/api"
-};
-
-/***/ }),
-
 /***/ "./node_modules/regenerator-runtime/runtime.js":
 /*!*****************************************************!*\
   !*** ./node_modules/regenerator-runtime/runtime.js ***!

@@ -56,7 +56,7 @@ class PageTargetController extends Controller
         $targetPage->target_rule = $target_rule;
         $targetPage->save();
 
-        return response()->json(['message' => 'Target Rule Created Successfully1'], 200);
+        return response()->json(['message' => 'Target Rule Created Successfully!', 'id' => $targetPage->id], 200);
     }
 
     /**

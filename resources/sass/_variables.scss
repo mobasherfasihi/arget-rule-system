@@ -107,6 +107,19 @@ $color-neutral: (
   "1000": #102A43,
 );
 
+$orange-color: (
+  'main': #f68631,
+  '100': #fef3ea,
+  '200': #fcdbc1,
+  '300': #fbc398,
+  '400': #f9aa6f,
+  '500': #f79246,
+  '600': #c56b27,
+  '700': #94501d,
+  '800': #623614,
+  '900': #311b0a,
+);
+
 // Define color variable
 $body-background-color: map-get($map: $color-neutral, $key: "100");
 $main-blue-lightest: rgb(247, 251, 253);
@@ -151,6 +164,12 @@ $neutral-light: map-get($map: $color-neutral, $key: "200");
 $neutral-main: map-get($map: $color-neutral, $key: "500");
 $neutral-dark: map-get($map: $color-neutral, $key: "800");
 $neutral-darkest: map-get($map: $color-neutral, $key: "1000");
+
+$orange-darkest: map-get($map: $orange-color, $key: "900");
+$orange-dark: map-get($map: $orange-color, $key: "800");
+$orange-main: map-get($map: $orange-color, $key: "main");
+$orange-light: map-get($map: $orange-color, $key: "200");
+$orange-lightest: map-get($map: $orange-color, $key: "100");
 
 $alert-error-color: $primary-red-main;
 $alert-success-color: $primary-green-main;

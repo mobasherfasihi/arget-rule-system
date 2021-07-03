@@ -136,7 +136,8 @@ export default {
       axios
         .post("/api/page-target", this.targetPage)
         .then((response) => {
-            this.$router.push({name: 'rules', params: {message: "Rule is created successfully"}});
+            let link = `${config.APP_URL}/js/task.js?id=${response.data.id}`
+            this.$router.push({name: 'rules', params: {message: "Rule is created successfully", link: '<script src="'+link+'">'}});
         })
         .catch((error) => {
           if (

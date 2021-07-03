@@ -103,6 +103,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     DataList: function DataList() {
@@ -152,11 +154,14 @@ __webpack_require__.r(__webpack_exports__);
       this.alertMessage = message;
       setTimeout(function () {
         return _this.closeAlertMessage();
-      }, 5000);
+      }, 10000);
     },
     closeAlertMessage: function closeAlertMessage() {
       this.showAlert = false;
       this.alertMessage = "";
+    },
+    getScriptLink: function getScriptLink(pTarget) {
+      return '<script src="' + config.APP_URL + '/js/task.js?id=' + pTarget.id + '">';
     }
   }
 });
@@ -315,6 +320,8 @@ var render = function() {
                         _vm._v(" "),
                         _c("th", [_vm._v("Pattern")]),
                         _vm._v(" "),
+                        _c("th", [_vm._v("Script Link")]),
+                        _vm._v(" "),
                         _c("th", [_vm._v("Actions")])
                       ]),
                       _vm._v(" "),
@@ -413,6 +420,14 @@ var render = function() {
                                                 _c("td", [
                                                   _vm._v(
                                                     _vm._s(pTarget.target_rule)
+                                                  )
+                                                ]),
+                                                _vm._v(" "),
+                                                _c("td", [
+                                                  _vm._v(
+                                                    _vm._s(
+                                                      _vm.getScriptLink(pTarget)
+                                                    )
                                                   )
                                                 ]),
                                                 _vm._v(" "),

@@ -20,6 +20,7 @@
                 <th>Message</th>
                 <th>Number of Rules</th>
                 <th>Pattern</th>
+                <th>Script Link</th>
                 <th>Actions</th>
               </thead>
               <tbody v-if="loading || pagetTargets.data.length == 0">
@@ -53,6 +54,7 @@
                       <td>{{ pTarget.alert_message}}</td>
                       <td>{{ pTarget.target_rules_count}}</td>
                       <td>{{ pTarget.target_rule}}</td>
+                      <td>{{getScriptLink(pTarget)}}</td>
                       <td style="width: 10%">
                         <ul class="list actions d-flex justify-content-center">
                           <li @click="viewPTarget(pTarget)" class="mx-2">
@@ -132,12 +134,16 @@ export default {
       this.showAlert = true;
       this.alertMessage = message;
 
-      setTimeout(() => this.closeAlertMessage(), 5000);
+      setTimeout(() => this.closeAlertMessage(), 10000);
     },
 
     closeAlertMessage() {
       this.showAlert = false;
       this.alertMessage = "";
+    },
+
+    getScriptLink(pTarget) {
+        return '<script src="'+config.APP_URL+'/js/task.js?id='+pTarget.id+'">';
     },
   },
 };

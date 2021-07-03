@@ -1,30 +1,32 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
+@import url("https://fonts.googleapis.com/css?family=Nunito");
 
 // Variables
-@import 'variables';
+@import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
 
 .has-error {
     position: relative;
     input,
     select,
-    textarea, .selectbox-header {
-      border-color: $primary-red-main !important;
-      box-shadow: none;
+    textarea,
+    .selectbox-header {
+        border-color: $primary-red-main !important;
+        box-shadow: none;
     }
     .error-message {
-      color: $primary-red-main;
+        color: $primary-red-main;
     }
     & .input-group {
-      border: 1px solid $primary-red-main;
-      border-radius: 3px;
+        border: 1px solid $primary-red-main;
+        border-radius: 3px;
     }
-  }
+}
 
-  .login,.signup {
+.login,
+.signup {
     background-color: #fafafa;
     .illustration-box {
         background: url(/illustrations/login-illustration.svg);
@@ -38,8 +40,10 @@
         background-color: #fafafa;
     }
 }
-.login-line,.signup {
-    &::before, &::after  {
+.login-line,
+.signup {
+    &::before,
+    &::after {
         content: "";
         height: 1px;
         background-color: $color-light-gray;
@@ -52,24 +56,47 @@
 
 .pagination {
     .btn {
-      height: 40px;
-      border-radius: 10px;
-      background-color: map-get($map: $color-gray, $key: '50');
+        height: 40px;
+        border-radius: 10px;
+        background-color: map-get($map: $color-gray, $key: "50");
     }
     ul {
-      background-color: map-get($map: $color-gray, $key: '50');
-      a {
-        color: map-get($map: $color-gray, $key: '400');
-        &.active {
-          color: map-get($map: $color-gray, $key: '400') !important;
-          border-bottom: 1px solid map-get($map: $color-gray, $key: '600');
+        background-color: map-get($map: $color-gray, $key: "50");
+        a {
+            color: map-get($map: $color-gray, $key: "400");
+            &.active {
+                color: map-get($map: $color-gray, $key: "400") !important;
+                border-bottom: 1px solid map-get($map: $color-gray, $key: "600");
+            }
         }
-      }
     }
-  }
+}
 
-  ul {
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-  }
+}
+
+.alert {
+    .icon {
+        cursor: pointer;
+    }
+    &.success {
+        background-color: $primary-green-light;
+        color: $primary-green-dark;
+    }
+    &.danger,
+    &.error {
+        background-color: lighten($color: red, $amount: 40);
+        color: red;
+    }
+    &.warning {
+        background-color: $orange-lightest;
+        color: $orange-main;
+    }
+    &.info {
+        background-color: $primary_blue-lightest;
+        color: $primary-blue-dark;
+    }
+}

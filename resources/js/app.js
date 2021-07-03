@@ -14,6 +14,8 @@ require("./bootstrap");
 window.Vue = require("vue");
 window.Bus = new Vue();
 
+window.config = require("./vue.config");
+
 
 Vue.store = store;
 

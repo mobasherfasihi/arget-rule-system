@@ -3225,6 +3225,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
 window.Bus = new vue__WEBPACK_IMPORTED_MODULE_2__.default();
+window.config = __webpack_require__(/*! ./vue.config */ "./resources/js/vue.config.js");
 vue__WEBPACK_IMPORTED_MODULE_2__.default.store = _store_index__WEBPACK_IMPORTED_MODULE_1__.default;
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -3606,6 +3607,19 @@ var state = {
   rateLimit: null
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (state);
+
+/***/ }),
+
+/***/ "./resources/js/vue.config.js":
+/*!************************************!*\
+  !*** ./resources/js/vue.config.js ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = {
+  BASE_URL: "/api",
+  APP_URL: "http://localhost:8080"
+};
 
 /***/ }),
 

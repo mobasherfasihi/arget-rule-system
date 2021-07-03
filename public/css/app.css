@@ -10013,7 +10013,8 @@ h3 {
 }
 .has-error input,
 .has-error select,
-.has-error textarea, .has-error .selectbox-header {
+.has-error textarea,
+.has-error .selectbox-header {
   border-color: #FA4616 !important;
   box-shadow: none;
 }
@@ -10025,10 +10026,12 @@ h3 {
   border-radius: 3px;
 }
 
-.login, .signup {
+.login,
+.signup {
   background-color: #fafafa;
 }
-.login .illustration-box, .signup .illustration-box {
+.login .illustration-box,
+.signup .illustration-box {
   background: url(/illustrations/login-illustration.svg);
   background-repeat: no-repeat;
   background-position: center center;
@@ -10036,17 +10039,21 @@ h3 {
   min-height: 100vh;
   height: 100%;
 }
-.login .or, .signup .or {
+.login .or,
+.signup .or {
   background-color: #fafafa;
 }
 
-.login-line::before, .login-line::after, .signup::before, .signup::after {
+.login-line::before, .login-line::after,
+.signup::before,
+.signup::after {
   content: "";
   height: 1px;
   background-color: #D9E2EC;
   width: 50%;
 }
-.login-line span, .signup span {
+.login-line span,
+.signup span {
   width: 50px;
 }
 
@@ -10066,4 +10073,24 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+
+.alert .icon {
+  cursor: pointer;
+}
+.alert.success {
+  background-color: #DAEDB9;
+  color: #375800;
+}
+.alert.danger, .alert.error {
+  background-color: #ffcccc;
+  color: red;
+}
+.alert.warning {
+  background-color: #fef3ea;
+  color: #f68631;
+}
+.alert.info {
+  background-color: #E7F4FA;
+  color: #00405E;
 }

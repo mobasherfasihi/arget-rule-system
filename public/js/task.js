@@ -25,7 +25,7 @@ const id = new URLSearchParams(new URL(self.getAttribute("src")).search).get(
 // })();
 
 $.ajax({
-    url: `localhost:8080/api/page-target/${id}/pattern`,
+    url: `ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/api/page-target/${id}/pattern`,
     context: document.body,
     success: function(response){
       let url = location.href;

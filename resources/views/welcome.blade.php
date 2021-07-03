@@ -21,8 +21,6 @@
                 <router-view></router-view>
             </transition>
        </div>
-
-       <script src="http://localhost:8080/task.js?id=1"></script>
        <script src="{{ mix('js/app.js') }}"></script>
     </body>
 </html>

@@ -1,9 +1,11 @@
-window.onload = function() {
-    const self = document.currentScript;
-    const id = new URLSearchParams(
-        new URL(self.getAttribute("src")).search
-    ).get("id");
+const self = document.currentScript;
+const id = new URLSearchParams(
+    new URL(self.getAttribute("src")).search
+).get("id");
 
+
+window.onload = function() {
+    console.log({self})
     $.ajax({
         url: `ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/api/page-target/${id}/pattern`,
         context: document.body,

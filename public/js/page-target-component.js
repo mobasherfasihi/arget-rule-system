@@ -162,6 +162,15 @@ __webpack_require__.r(__webpack_exports__);
     },
     getScriptLink: function getScriptLink(pTarget) {
       return '<script src="' + config.APP_URL + '/js/task.js?id=' + pTarget.id + '">';
+    },
+    view: function view(pTarget) {
+      console.log('View action');
+    },
+    edit: function edit(pTarget) {
+      console.log('Edit action');
+    },
+    "delete": function _delete(pTarget) {
+      console.log('Delete action');
     }
   }
 });
@@ -454,7 +463,7 @@ var render = function() {
                                                               click: function(
                                                                 $event
                                                               ) {
-                                                                return _vm.viewPTarget(
+                                                                return _vm.view(
                                                                   pTarget
                                                                 )
                                                               }

@@ -57,7 +57,7 @@
                       <td>{{getScriptLink(pTarget)}}</td>
                       <td style="width: 10%">
                         <ul class="list actions d-flex justify-content-center">
-                          <li @click="viewPTarget(pTarget)" class="mx-2">
+                          <li @click="view(pTarget)" class="mx-2">
                             <span class="text-sm text-gray-500">View</span>
                           </li>
                           <li @click="edit(pTarget)" class="mx-2">
@@ -143,8 +143,20 @@ export default {
     },
 
     getScriptLink(pTarget) {
-        return '<script src="'+config.APP_URL+'/js/task.js?id='+pTarget.id+'">';
+      return '<script src="'+config.APP_URL+'/js/task.js?id='+pTarget.id+'">';
     },
+
+    view(pTarget) {
+      console.log('View action')
+    },
+
+    edit(pTarget) {
+      console.log('Edit action')
+    },
+
+    delete(pTarget) {
+      console.log('Delete action')
+    }
   },
 };
 </script>

@@ -1,6 +1,6 @@
 const routes = [
     {
-        path: "/rules",
+        path: "",
         meta: {auth: true},
         component: { render: (c) => c('router-view') },
         children: [

@@ -98,6 +98,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -109,7 +160,8 @@ __webpack_require__.r(__webpack_exports__);
           rule: null,
           pattern: null
         }]
-      }
+      },
+      errors: []
     };
   },
   methods: {
@@ -148,7 +200,7 @@ __webpack_require__.r(__webpack_exports__);
         var link = "".concat(config.APP_URL, "/js/task.js?id=").concat(response.data.id);
 
         _this.$router.push({
-          name: 'rules',
+          name: "rules",
           params: {
             message: "Rule is created successfully",
             link: '<script src="' + link + '">'
@@ -264,71 +316,104 @@ var render = function() {
         "form",
         [
           _c("div", { staticClass: "form-row" }, [
-            _c("div", { staticClass: "form-group col-md-6" }, [
-              _c("label", { attrs: { for: "targetTitle" } }, [_vm._v("Title")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.targetPage.title,
-                    expression: "targetPage.title"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "targetTitle",
-                  placeholder: "Title"
-                },
-                domProps: { value: _vm.targetPage.title },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              {
+                staticClass: "form-group col-md-6",
+                class: _vm.errors && _vm.errors["title"] ? "has-error" : ""
+              },
+              [
+                _c("label", { attrs: { for: "targetTitle" } }, [
+                  _vm._v("Title")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.targetPage.title,
+                      expression: "targetPage.title"
                     }
-                    _vm.$set(_vm.targetPage, "title", $event.target.value)
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "targetTitle",
+                    placeholder: "Title"
+                  },
+                  domProps: { value: _vm.targetPage.title },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.targetPage, "title", $event.target.value)
+                    }
                   }
-                }
-              })
-            ]),
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors["title"]
+                  ? _c("small", {
+                      staticClass: "error-message",
+                      domProps: { innerHTML: _vm._s(_vm.errors["title"][0]) }
+                    })
+                  : _vm._e()
+              ]
+            ),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group col-md-6" }, [
-              _c("label", { attrs: { for: "alertMessage" } }, [
-                _vm._v("Alert Message")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.targetPage.alert_message,
-                    expression: "targetPage.alert_message"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "alertMessage",
-                  placeholder: "Alert Message"
-                },
-                domProps: { value: _vm.targetPage.alert_message },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+            _c(
+              "div",
+              {
+                staticClass: "form-group col-md-6",
+                class:
+                  _vm.errors && _vm.errors["alert_message"] ? "has-error" : ""
+              },
+              [
+                _c("label", { attrs: { for: "alertMessage" } }, [
+                  _vm._v("Alert Message")
+                ]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.targetPage.alert_message,
+                      expression: "targetPage.alert_message"
                     }
-                    _vm.$set(
-                      _vm.targetPage,
-                      "alert_message",
-                      $event.target.value
-                    )
+                  ],
+                  staticClass: "form-control",
+                  attrs: {
+                    type: "text",
+                    id: "alertMessage",
+                    placeholder: "Alert Message"
+                  },
+                  domProps: { value: _vm.targetPage.alert_message },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.targetPage,
+                        "alert_message",
+                        $event.target.value
+                      )
+                    }
                   }
-                }
-              })
-            ])
+                }),
+                _vm._v(" "),
+                _vm.errors && _vm.errors["alert_message"]
+                  ? _c("small", {
+                      staticClass: "error-message",
+                      domProps: {
+                        innerHTML: _vm._s(_vm.errors["alert_message"][0])
+                      }
+                    })
+                  : _vm._e()
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("hr"),
@@ -338,168 +423,262 @@ var render = function() {
               "div",
               { key: "targetRule-" + index, staticClass: "form-row" },
               [
-                _c("div", { staticClass: "form-group col-md-2" }, [
-                  _c("label", { attrs: { for: "inputState" } }, [
-                    _vm._v("Instruction")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.targetPage.target_rules[index].instruction,
-                          expression:
-                            "targetPage.target_rules[index].instruction"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "inputState" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.targetPage.target_rules[index],
-                            "instruction",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { selected: "" }, domProps: { value: null } },
-                        [_vm._v("Choose...")]
-                      ),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "show" } }, [
-                        _vm._v("Show on")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "not_show" } }, [
-                        _vm._v("Don't show on")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-2" }, [
-                  _c("label", { attrs: { for: "inputState" } }, [
-                    _vm._v("Rule")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.targetPage.target_rules[index].rule,
-                          expression: "targetPage.target_rules[index].rule"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: { id: "inputState" },
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.targetPage.target_rules[index],
-                            "rule",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c(
-                        "option",
-                        { attrs: { selected: "" }, domProps: { value: null } },
-                        [_vm._v("Select Rule")]
-                      ),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "contains" } }, [
-                        _vm._v("pages that contain")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "specific_page" } }, [
-                        _vm._v("a specific page")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "starting_with" } }, [
-                        _vm._v("pages starting with")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "ending_with" } }, [
-                        _vm._v("pages ending with")
-                      ])
-                    ]
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-6" }, [
-                  _c("label", { attrs: { for: "basic-url" } }, [
-                    _vm._v("Your pattern")
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "input-group mb-3" }, [
-                    _vm._m(0, true),
+                _c(
+                  "div",
+                  {
+                    staticClass: "form-group col-md-2",
+                    class:
+                      _vm.errors &&
+                      (_vm.errors["target_rules." + index + ".instruction"] ||
+                        _vm.errors["target_rules"])
+                        ? "has-error"
+                        : ""
+                  },
+                  [
+                    _c("label", { attrs: { for: "inputState" } }, [
+                      _vm._v("Instruction")
+                    ]),
                     _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.targetPage.target_rules[index].pattern,
-                          expression: "targetPage.target_rules[index].pattern"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      attrs: {
-                        type: "text",
-                        id: "basic-url",
-                        "aria-describedby": "basic-addon3"
-                      },
-                      domProps: {
-                        value: _vm.targetPage.target_rules[index].pattern
-                      },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value:
+                              _vm.targetPage.target_rules[index].instruction,
+                            expression:
+                              "targetPage.target_rules[index].instruction"
                           }
-                          _vm.$set(
-                            _vm.targetPage.target_rules[index],
-                            "pattern",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "inputState" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.targetPage.target_rules[index],
+                              "instruction",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
                         }
-                      }
-                    })
-                  ])
-                ]),
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { selected: "" },
+                            domProps: { value: null }
+                          },
+                          [_vm._v("Choose...")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "show" } }, [
+                          _vm._v("Show on")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "not_show" } }, [
+                          _vm._v("Don't show on")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.errors &&
+                    (_vm.errors["target_rules." + index + ".instruction"] ||
+                      _vm.errors["target_rules"])
+                      ? _c("small", {
+                          staticClass: "error-message",
+                          domProps: {
+                            innerHTML: _vm._s(
+                              _vm.errors["target_rules"]
+                                ? _vm.errors["target_rules"][0]
+                                : _vm.errors[
+                                    "target_rules." + index + ".instruction"
+                                  ][0]
+                            )
+                          }
+                        })
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "form-group col-md-2",
+                    class:
+                      _vm.errors &&
+                      (_vm.errors["target_rules." + index + ".rule"] ||
+                        _vm.errors["target_rules"])
+                        ? "has-error"
+                        : ""
+                  },
+                  [
+                    _c("label", { attrs: { for: "inputState" } }, [
+                      _vm._v("Rule")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.targetPage.target_rules[index].rule,
+                            expression: "targetPage.target_rules[index].rule"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "inputState" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.targetPage.target_rules[index],
+                              "rule",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c(
+                          "option",
+                          {
+                            attrs: { selected: "" },
+                            domProps: { value: null }
+                          },
+                          [_vm._v("Select Rule")]
+                        ),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "contains" } }, [
+                          _vm._v("pages that contain")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "specific_page" } }, [
+                          _vm._v("a specific page")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "starting_with" } }, [
+                          _vm._v("pages starting with")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "ending_with" } }, [
+                          _vm._v("pages ending with")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _vm.errors &&
+                    (_vm.errors["target_rules." + index + ".rule"] ||
+                      _vm.errors["target_rules"])
+                      ? _c("small", {
+                          staticClass: "error-message",
+                          domProps: {
+                            innerHTML: _vm._s(
+                              _vm.errors["target_rules"]
+                                ? _vm.errors["target_rules"][0]
+                                : _vm.errors[
+                                    "target_rules." + index + ".rule"
+                                  ][0]
+                            )
+                          }
+                        })
+                      : _vm._e()
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "form-group col-md-6",
+                    class:
+                      _vm.errors &&
+                      (_vm.errors["target_rules." + index + ".pattern"] ||
+                        _vm.errors["target_rules"])
+                        ? "has-error"
+                        : ""
+                  },
+                  [
+                    _c("label", { attrs: { for: "basic-url" } }, [
+                      _vm._v("Your pattern")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "input-group mb-3" }, [
+                      _vm._m(0, true),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.targetPage.target_rules[index].pattern,
+                            expression: "targetPage.target_rules[index].pattern"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: {
+                          type: "text",
+                          id: "basic-url",
+                          "aria-describedby": "basic-addon3"
+                        },
+                        domProps: {
+                          value: _vm.targetPage.target_rules[index].pattern
+                        },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.targetPage.target_rules[index],
+                              "pattern",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _vm.errors &&
+                    (_vm.errors["target_rules." + index + ".pattern"] ||
+                      _vm.errors["target_rules"])
+                      ? _c("small", {
+                          staticClass: "error-message",
+                          domProps: {
+                            innerHTML: _vm._s(
+                              _vm.errors["target_rules"]
+                                ? _vm.errors["target_rules"][0]
+                                : _vm.errors[
+                                    "target_rules." + index + ".pattern"
+                                  ][0]
+                            )
+                          }
+                        })
+                      : _vm._e()
+                  ]
+                ),
                 _vm._v(" "),
                 _c(
                   "div",

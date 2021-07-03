@@ -5,13 +5,38 @@
       <h1 class="mb-4">Add New Page Target</h1>
       <form>
         <div class="form-row">
-          <div class="form-group col-md-6">
+          <div class="form-group col-md-6" :class="errors && errors['title'] ? 'has-error': ''">
             <label for="targetTitle">Title</label>
-            <input type="text" class="form-control" id="targetTitle" placeholder="Title" v-model="targetPage.title" />
+            <input
+              type="text"
+              class="form-control"
+              id="targetTitle"
+              placeholder="Title"
+              v-model="targetPage.title"
+            />
+            <small
+              class="error-message"
+              v-if="errors && errors['title']"
+              v-html="errors['title'][0]"
+            ></small>
           </div>
-          <div class="form-group col-md-6">
+          <div
+            class="form-group col-md-6"
+            :class="errors && errors['alert_message'] ? 'has-error': ''"
+          >
             <label for="alertMessage">Alert Message</label>
-            <input type="text" class="form-control" id="alertMessage" placeholder="Alert Message" v-model="targetPage.alert_message"/>
+            <input
+              type="text"
+              class="form-control"
+              id="alertMessage"
+              placeholder="Alert Message"
+              v-model="targetPage.alert_message"
+            />
+            <small
+              class="error-message"
+              v-if="errors && errors['alert_message']"
+              v-html="errors['alert_message'][0]"
+            ></small>
           </div>
         </div>
         <hr />
@@ -20,7 +45,10 @@
           :key="`targetRule-${index}`"
           v-for="(targetRule, index) in targetPage.target_rules"
         >
-          <div class="form-group col-md-2">
+          <div
+            class="form-group col-md-2"
+            :class="errors && (errors['target_rules.'+index+'.instruction'] || errors['target_rules']) ? 'has-error' : ''"
+          >
             <label for="inputState">Instruction</label>
             <select
               id="inputState"
@@ -31,8 +59,17 @@
               <option value="show">Show on</option>
               <option value="not_show">Don't show on</option>
             </select>
+
+            <small
+              class="error-message"
+              v-if="errors && (errors['target_rules.'+index+'.instruction'] || errors['target_rules'])"
+              v-html="errors['target_rules'] ? errors['target_rules'][0] : errors['target_rules.'+index+'.instruction'][0]"
+            ></small>
           </div>
-          <div class="form-group col-md-2">
+          <div
+            class="form-group col-md-2"
+            :class="errors && (errors['target_rules.'+index+'.rule'] || errors['target_rules']) ? 'has-error' : ''"
+          >
             <label for="inputState">Rule</label>
             <select
               id="inputState"
@@ -45,8 +82,16 @@
               <option value="starting_with">pages starting with</option>
               <option value="ending_with">pages ending with</option>
             </select>
+            <small
+              class="error-message"
+              v-if="errors && (errors['target_rules.'+index+'.rule'] || errors['target_rules'])"
+              v-html="errors['target_rules'] ? errors['target_rules'][0] : errors['target_rules.'+index+'.rule'][0]"
+            ></small>
           </div>
-          <div class="form-group col-md-6">
+          <div
+            class="form-group col-md-6"
+            :class="errors && (errors['target_rules.'+index+'.pattern'] || errors['target_rules']) ? 'has-error' : ''"
+          >
             <label for="basic-url">Your pattern</label>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
@@ -60,6 +105,12 @@
                 v-model="targetPage.target_rules[index].pattern"
               />
             </div>
+
+            <small
+              class="error-message"
+              v-if="errors && (errors['target_rules.'+index+'.pattern'] || errors['target_rules'])"
+              v-html="errors['target_rules'] ? errors['target_rules'][0] : errors['target_rules.'+index+'.pattern'][0]"
+            ></small>
           </div>
           <div class="form-group col-md-2 d-flex align-items-center">
             <a
@@ -100,6 +151,7 @@ export default {
           },
         ],
       },
+      errors: [],
     };
   },
   methods: {
@@ -136,8 +188,14 @@ export default {
       axios
         .post("/api/page-target", this.targetPage)
         .then((response) => {
-            let link = `${config.APP_URL}/js/task.js?id=${response.data.id}`
-            this.$router.push({name: 'rules', params: {message: "Rule is created successfully", link: '<script src="'+link+'">'}});
+          let link = `${config.APP_URL}/js/task.js?id=${response.data.id}`;
+          this.$router.push({
+            name: "rules",
+            params: {
+              message: "Rule is created successfully",
+              link: '<script src="' + link + '">',
+            },
+          });
         })
         .catch((error) => {
           if (

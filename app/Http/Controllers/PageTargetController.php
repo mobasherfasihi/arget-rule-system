@@ -53,7 +53,7 @@ class PageTargetController extends Controller
             $target_rule .= $row['regex_pattern'];
         }
 
-        $targetPage->target_rule = $target_rule;
+        $targetPage->target_rule = '('.$target_rule.').*';
         $targetPage->save();
 
         return response()->json(['message' => 'Target Rule Created Successfully!', 'id' => $targetPage->id], 200);

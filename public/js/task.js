@@ -7,7 +7,7 @@ const id = new URLSearchParams(
 window.onload = function() {
     console.log({self}, {id})
     $.ajax({
-        url: `ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/api/page-target/${id}/pattern`,
+        url: `http://ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/api/page-target/${id}/pattern`,
         context: document.body,
         success: function(response) {
             console.log("heyyyyyyyyyy", response, response.data);

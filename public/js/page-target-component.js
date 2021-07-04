@@ -247,26 +247,6 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.targetPage.target_rules.splice(index, 1);
       }
-    },
-    createRule: function createRule() {
-      var _this = this;
-
-      axios.post("/api/page-target", this.targetPage).then(function (response) {
-        var link = "".concat(config.APP_URL, "/js/task.js?id=").concat(response.data.id);
-
-        _this.$router.push({
-          name: "rules",
-          params: {
-            message: "Rule is created successfully",
-            link: '<script src="' + link + '">'
-          }
-        });
-      })["catch"](function (error) {
-        if (error.response.status == 422 && error.response.data.hasOwnProperty("errors")) {
-          _this.errors = error.response.data.errors;
-          return;
-        }
-      });
     }
   }
 });

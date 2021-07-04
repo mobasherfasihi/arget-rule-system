@@ -234,30 +234,6 @@ export default {
         this.targetPage.target_rules.splice(index, 1);
       }
     },
-
-    createRule() {
-      axios
-        .post("/api/page-target", this.targetPage)
-        .then((response) => {
-          let link = `${config.APP_URL}/js/task.js?id=${response.data.id}`;
-          this.$router.push({
-            name: "rules",
-            params: {
-              message: "Rule is created successfully",
-              link: '<script src="' + link + '">',
-            },
-          });
-        })
-        .catch((error) => {
-          if (
-            error.response.status == 422 &&
-            error.response.data.hasOwnProperty("errors")
-          ) {
-            this.errors = error.response.data.errors;
-            return;
-          }
-        });
-    },
   },
 };
 </script>

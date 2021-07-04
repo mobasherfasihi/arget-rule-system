@@ -54,7 +54,7 @@
                       <td>{{ pTarget.alert_message}}</td>
                       <td>{{ pTarget.target_rules_count}}</td>
                       <td>{{ pTarget.target_rule}}</td>
-                      <td>{{getScriptLink(pTarget)}}</td>
+                      <td class="not-transform">{{getScriptLink(pTarget)}}</td>
                       <td style="width: 10%">
                         <ul class="list actions d-flex justify-content-center">
                           <li @click="view(pTarget)" class="mx-2">
@@ -165,4 +165,7 @@ export default {
 </script>
 
 <style>
+  .not-transform {
+    text-transform: none !important
+  }
 </style>

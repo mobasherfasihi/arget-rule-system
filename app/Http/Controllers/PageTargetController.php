@@ -19,7 +19,7 @@ class PageTargetController extends Controller
      */
     public function index()
     {
-        return response()->json(PageTarget::withCount('targetRules')->paginate(10));
+        return response()->json(PageTarget::latest()->withCount('targetRules')->paginate(10));
     }
 
     /**

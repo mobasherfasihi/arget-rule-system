@@ -5,8 +5,8 @@ const id = new URLSearchParams(
 
 
 window.onload = function() {
-    $.ajax({
-        url: `http://ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/api/page-target/${id}/pattern`,
+    jQuery.ajax({
+        url: `https://ec2-13-235-95-181.ap-south-1.compute.amazonaws.com/api/page-target/${id}/pattern`,
         context: document.body,
         success: function(response) {
             let url = location.href;

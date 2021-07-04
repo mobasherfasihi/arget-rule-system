@@ -13,7 +13,12 @@ const routes = [
                 path: "add",
                 name: "page-target-add",
                 component: () =>  import(/* webpackChunkName: "page-target-add-component" */ "../components/pageTarget/AddComponent.vue")
-            }
+            },
+            {
+                path: '/:id/edit',
+                name: "rule-edit",
+                component: () => import(/* webpackChunkName: "page-target-component" */ "../components/pageTarget/AddComponent.vue"),
+            },
         ]
     },
     {

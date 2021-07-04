@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\PageTarget;
 use App\Models\TargetRule;
 use App\User;
 
@@ -12,24 +13,25 @@ trait TargetRuleTrait
      * Create Target Rules
      *
      * @param array $ruleData
-     * @param int $pageTargetID
+     * @param \App\Models\PageTarget $pageTarget
      * @return void
      */
-    public function createTargetRule(array $ruleData, int $pageTargetID) :void
+    public function createTargetRule(array $ruleData, PageTarget $pageTarget) :void
     {
         $data  = [];
 
         foreach($ruleData as $row) {
-            $data[] = [
-                'instruction' => $row['instruction'],
-                'rule' => $row['rule'],
-                'pattern' => $row['pattern'],
-                'regex_pattern' => $this->regexPattern($row),
-                'page_target_id' => $pageTargetID
-            ];
+            $targetRule = new TargetRule();
+            $targetRule->instruction = $row['instruction'];
+            $targetRule->rule = $row['rule'];
+            $targetRule->pattern = $row['pattern'];
+            $targetRule->regex_pattern = $this->regexPattern($row);
+
+            array_push($data, $targetRule);
         }
 
-        TargetRule::insert($data);
+        $pageTarget->targetRules()->delete();
+        $pageTarget->targetRules()->saveMany($data);
     }
 
     /**

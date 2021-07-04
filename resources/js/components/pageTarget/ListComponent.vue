@@ -151,7 +151,10 @@ export default {
     },
 
     edit(pTarget) {
-      console.log('Edit action')
+      this.$router.push({
+        name: "rule-edit",
+        params: { id: pTarget.id },
+      });
     },
 
     deletePTarget(pTarget) {

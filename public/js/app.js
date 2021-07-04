@@ -3391,6 +3391,12 @@ var routes = [{
     component: function component() {
       return __webpack_require__.e(/*! import() | page-target-add-component */ "page-target-add-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/pageTarget/AddComponent.vue */ "./resources/js/components/pageTarget/AddComponent.vue"));
     }
+  }, {
+    path: '/:id/edit',
+    name: "rule-edit",
+    component: function component() {
+      return __webpack_require__.e(/*! import() | page-target-component */ "page-target-component").then(__webpack_require__.bind(__webpack_require__, /*! ../components/pageTarget/AddComponent.vue */ "./resources/js/components/pageTarget/AddComponent.vue"));
+    }
   }]
 }, {
   path: "/login",

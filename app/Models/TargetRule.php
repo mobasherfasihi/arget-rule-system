@@ -10,7 +10,7 @@ class TargetRule extends Model
     use HasFactory;
 
 
-    public function page()
+    public function pageTarget()
     {
         return  $this->belongsTo(PageTarget::class, 'page_target_id',  'id');
     }

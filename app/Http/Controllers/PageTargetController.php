@@ -42,43 +42,35 @@ class PageTargetController extends Controller
     {
         $data = Arr::except($request->validated(), 'target_rules');
 
-        $targetPage = PageTarget::create($data);
+        $pageTarget = PageTarget::create($data);
 
-        $this->createTargetRule($request['target_rules'], $targetPage->id);
+        $this->createTargetRule($request['target_rules'], $pageTarget);
 
-        $ruleRegexPatterns = $targetPage->targetRules()->select(DB::raw('group_concat(regex_pattern SEPARATOR "|") as regex_pattern'))->groupBy('instruction')->get();
+        $pageTarget->setPageRuleRegex();
 
-        $target_rule = '';
-        foreach($ruleRegexPatterns as $row) {
-            $target_rule .= $row['regex_pattern'];
-        }
-
-        $targetPage->target_rule = '('.$target_rule.').*';
-        $targetPage->save();
-
-        return response()->json(['message' => 'Target Rule Created Successfully!', 'id' => $targetPage->id], 200);
+        return response()->json(['message' => 'Target Rule Created Successfully!', 'id' => $pageTarget->id], 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\PageTarget  $pageTarget
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(PageTarget $pageTarget)
     {
-        //
+        return response()->json($pageTarget->load('targetRules'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\PageTarget  $pageTarget
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(PageTarget $pageTarget)
     {
-        //
+
     }
 
     /**
@@ -88,9 +80,18 @@ class PageTargetController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PageTargetRequest $request, PageTarget $pageTarget)
     {
-        //
+        $data = Arr::except($request->validated(), 'target_rules');
+
+        $targetPage = $pageTarget->update($data);
+
+        $this->createTargetRule($request['target_rules'], $pageTarget);
+
+        $pageTarget->setPageRuleRegex();
+
+        return response()->json(['message' => 'Target Rule Updated Successfully!', 'id' => $pageTarget->id], 200);
+
     }
 
     /**

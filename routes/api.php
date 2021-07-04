@@ -19,13 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Api')->group(function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', [AuthController::class, 'login']);
-        Route::prefix('user')->group(function() {
+        Route::post('refresh', [AuthController::class, 'refresh']);
+        Route::prefix('user')->group(function () {
             Route::post('register', [AuthController::class, 'register']);
         });
     });
-    Route::prefix('page-target')->group(function() {
-        Route::get('', [PageTargetController::class, 'index'])->middleware('auth');
-        Route::post('', [PageTargetController::class, 'store'])->middleware('auth');
+    Route::prefix('page-target')->group(function () {
+        Route::middleware('auth')->group(function () {
+            Route::get('', [PageTargetController::class, 'index']);
+            Route::post('', [PageTargetController::class, 'store']);
+            Route::get('{pageTarget}', [PageTargetController::class, 'show']);
+            Route::patch('{pageTarget}', [PageTargetController::class, 'update']);
+        });
         Route::get('{id}/pattern', [PageTargetController::class, 'fetchPattern']);
     });
 });

@@ -53,7 +53,7 @@
                       <td>{{ pTarget.title }}</td>
                       <td>{{ pTarget.alert_message}}</td>
                       <td>{{ pTarget.target_rules_count}}</td>
-                      <td>{{ pTarget.target_rule}}</td>
+                      <td class="not-transform">{{ pTarget.target_rule}}</td>
                       <td class="not-transform">{{getScriptLink(pTarget)}}</td>
                       <td style="width: 10%">
                         <ul class="list actions d-flex justify-content-center">
@@ -143,7 +143,7 @@ export default {
     },
 
     getScriptLink(pTarget) {
-      return '<script src="'+config.APP_URL+'/js/task.js?id='+pTarget.id+'">';
+      return '<script src="'+config.APP_URL+'/js/task.js?id='+pTarget.id+'"><\/script>';
     },
 
     view(pTarget) {

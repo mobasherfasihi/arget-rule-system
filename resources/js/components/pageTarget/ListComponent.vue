@@ -143,11 +143,17 @@ export default {
     },
 
     getScriptLink(pTarget) {
-      return '<script src="'+config.APP_URL+'/js/task.js?id='+pTarget.id+'"><\/script>';
+      return (
+        '<script src="' +
+        config.APP_URL +
+        "/js/task.js?id=" +
+        pTarget.id +
+        '"><\/script>'
+      );
     },
 
     view(pTarget) {
-      console.log('View action')
+      console.log("View action");
     },
 
     edit(pTarget) {
@@ -158,14 +164,14 @@ export default {
     },
 
     deletePTarget(pTarget) {
-      console.log('Delete action')
-    }
+      console.log("Delete action");
+    },
   },
 };
 </script>
 
 <style>
-  .not-transform {
-    text-transform: none !important
-  }
+.not-transform {
+  text-transform: none !important;
+}
 </style>
